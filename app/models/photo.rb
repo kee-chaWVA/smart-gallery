@@ -1,4 +1,4 @@
 class Photo < ApplicationRecord
   validates :filename, presence: true
-  validates :filepath, presence: true, uniqueness: true
+  validates :file_path, presence: true, uniqueness: true
 end
