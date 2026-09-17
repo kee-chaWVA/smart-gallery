@@ -11,6 +11,7 @@ class PhotoDiscoveryService
       Photo.find_or_create_by!(file_path: file_path) do |photo|
         photo.filename = filename
         photo.status = "pending"
+        photo.image.attach(io: File.open(file_path), filename: filename)
       end
     end
   end

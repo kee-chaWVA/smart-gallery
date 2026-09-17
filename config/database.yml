@@ -1,5 +1,4 @@
 default: &default
-  pool: 10
   adapter: postgresql
   encoding: unicode
   host: <%= ENV.fetch("DB_HOST") %>

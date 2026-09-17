@@ -21,6 +21,7 @@ gem "solid_queue"
 gem "solid_cable"
 
 gem "sidekiq"
+gem "sidekiq-cron"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -33,6 +34,9 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+
+# S3-compatible client, used by Active Storage to talk to Cloudflare R2 in production
+gem "aws-sdk-s3", require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
