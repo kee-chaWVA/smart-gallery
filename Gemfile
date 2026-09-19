@@ -38,6 +38,9 @@ gem "image_processing", "~> 1.2"
 # S3-compatible client, used by Active Storage to talk to Cloudflare R2 in production
 gem "aws-sdk-s3", require: false
 
+# HTTP client used to call the Python ML service
+gem "faraday"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 

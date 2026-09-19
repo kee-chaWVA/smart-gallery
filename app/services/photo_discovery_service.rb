@@ -8,11 +8,14 @@ class PhotoDiscoveryService
     Dir.glob(IMPORTS_DIR.join("*.{#{EXTENSIONS.join(',')}}")).each do |file_path|
       filename = File.basename(file_path)
 
-      Photo.find_or_create_by!(file_path: file_path) do |photo|
-        photo.filename = filename
-        photo.status = "pending"
-        photo.image.attach(io: File.open(file_path), filename: filename)
-      end
+      photo = Photo.find_or_initialize_by(file_path: file_path)
+      next unless photo.new_record?
+
+      photo.filename = filename
+      photo.status = "pending"
+      photo.save!
+
+      PhotoUploadJob.perform_async(photo.id)
     end
   end
 end
